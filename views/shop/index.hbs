@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+
+    <div class="swiper-viewport">
+      <div id="slideshow0" class="swiper-container swiper-container-horizontal">
+        <div class="swiper-wrapper" style="transform: translate3d(-2226px, 0px, 0px); transition-duration: 0ms;">
+          <div class="swiper-slide text-center swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="1" style="width: 712px; margin-right: 30px;">
+            <img src="/data/images/MacBookAir-1140x380.jpg" alt="MacBookAir" class="img-responsive">
+          </div> 
+          <div class="swiper-slide text-center swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 712px; margin-right: 30px;">
+            <a href="#"><img src="/data/images/iPhone6-1140x380.jpg" alt="iPhone 6" class="img-responsive"></a>
+          </div>
+          <div class="swiper-slide text-center swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="1" style="width: 712px; margin-right: 30px;">
+            <img src="/data/images/MacBookAir-1140x380.jpg" alt="MacBookAir" class="img-responsive">
+          </div>
+          <div class="swiper-slide text-center swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 712px; margin-right: 30px;">
+            <a href="#"><img src="/data/images/iPhone6-1140x380.jpg" alt="iPhone 6" class="img-responsive"></a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination slideshow0 swiper-pagination-clickable swiper-pagination-bullets">
+        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+        <span class="swiper-pagination-bullet"></span>
+      </div>
+      <div class="swiper-pager">
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <div class="content col-sm-12">
+      <div></div>
+      <h3>Featured</h3>
+      <div class="row">
+        {{# each products }}
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="thumbnail transition">
+              <div class="image"><a href="#"><img src={{ this.image }} alt={{ this.name }} title={{ this.name }} class="img-responsive"></a></div>
+              <div class="caption">
+              <h4><a href="#">{{ this.name }}</a></h4>
+              <p class="description">{{ this.description }}</p>
+              <p class="price">
+                {{#ifOffer this.offerprice this.price}}
+                  <span class="price-actual">Actual price: ${{ this.price }}</span>
+                {{else}}
+                  <span class="price-tax">&nbsp;</span>
+                {{/ifOffer}}
+                {{money this.offerprice }}
+                <span class="price-tax">Ex Tax: ${{percent this.price this.taxpercent }}</span>
+              </p>
+              </div>
+              <div class="button-group">
+              <a href="/addtocart/{{this._id}}"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-xs hidden-sm hidden-md">Add to Cart</span></a>
+              <a href="#"><span class="glyphicon glyphicon-heart"></span></a>
+              <a href="#"><span class="glyphicon glyphicon-transfer"></span></a>
+              </div>
+            </div>
+          </div>        
+        {{/each}}        
+      </div>
+    </div>
+    
+  </div>
+</div>

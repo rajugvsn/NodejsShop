@@ -1,0 +1,55 @@
+{ "products" : [
+  {
+    "Id":1,
+    "image":"/data/images/macbook_1-200x200.jpg",
+    "name":"MacBook",
+    "description":"The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.",
+    "brand":"Apple",
+    "categoryId":2,
+    "price":657.00,
+    "taxpercent":12,
+    "isfeatured":true,
+    "stock":4,
+    "rewardpoints":600,
+    "specifications":{"memory":"8GB", "processor":"Dual Core"}
+  },
+  {
+    "Id":2,
+    "image":"/data/images/iphone_1-200x200.jpg",
+    "name":"iPhone",
+    "description":"iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name or number in your address book, a favorites list, or a call log. It also automatically syncs all your contacts from a PC, Mac, or Internet service. And it lets you select and listen to voicemail messages in whatever order you want just like email.",
+    "categoryId":6,
+    "price":123.00,
+    "taxpercent":12,
+    "isfeatured":true,
+    "stock":7,
+    "rewardpoints":0,
+    "specifications":{}
+  },
+  {
+    "Id":3,
+    "image":"/data/images/apple_cinema_30-200x200.jpg",
+    "name":"iPhone",
+    "description":"The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve.",
+    "categoryId":1,
+    "price":110.00,
+    "taxpercent":12,
+    "isfeatured":true,
+    "stock":2,
+    "rewardpoints":100,
+    "specifications":{"clockspeed":"100mhz"}
+  },
+  {
+    "Id":4,
+    "image":"/data/images/canon_eos_5d_1-200x200.jpg",
+    "name":"Canon EOS 5D",
+    "description":"Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category', while we're not typically too concerned with marketing talk this particular statement is clearly pretty accurate.",
+    "categoryId":7,
+    "price":98.00,
+    "taxpercent":12,
+    "isfeatured":true,
+    "stock":2,
+    "rewardpoints":200,
+    "specifications":{}
+  }
+]}

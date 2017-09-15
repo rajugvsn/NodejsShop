@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>Register Account</h1>
+      <p>If you already have an account with us, please login at the <a href="/user/login">login page</a>.</p>
+      {{#if errors}}
+        <div class="alert alert-danger">
+          {{# each errors}}
+            <p>{{this}}</p>
+          {{/each}}
+        </div>
+      {{/if}}
+      <form action="/user/register" method="post" class="form-horizontal">
+        <fieldset>
+          <legend>Your Credentials</legend>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-username">User Name</label>
+            <div class="col-sm-10">
+              <input type="text" name="username" value="" placeholder="User Name" id="input-username" class="form-control">
+            </div>
+          </div>      
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-password">Password</label>
+            <div class="col-sm-10">
+              <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+            <div class="col-sm-10">
+              <input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset id="account">
+          <legend>Your Personal Details</legend>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+            <div class="col-sm-10">
+              <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+            <div class="col-sm-10">
+              <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+            <div class="col-sm-10">
+              <input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
+            <div class="col-sm-10">
+              <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control">
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-billaddress">Billing Address</label>
+            <div class="col-sm-10">
+              <textarea name="billingaddress" id="input-billaddress" rows="5" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-shipaddress">Shipping Address</label>
+            <div class="col-sm-10">
+              <textarea name="shippingaddress" id="input-shipaddress" rows="5" class="form-control"></textarea>
+            </div>
+          </div>            
+        </fieldset>
+        <fieldset>
+          <legend>Newsletter</legend>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Subscribe</label>
+            <div class="col-sm-10"> 
+              <label class="radio-inline">
+                <input type="radio" name="issubscribed" value="1"> Yes
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="issubscribed" value="0" checked="checked"> No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <div class="pull-right">I have read and agree to the 
+            <a href="#" class="agree"><b>Privacy Policy</b></a>
+            <input type="checkbox" name="agree" value="1">
+            &nbsp;
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <input type="submit" value="Continue" class="btn btn-primary">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

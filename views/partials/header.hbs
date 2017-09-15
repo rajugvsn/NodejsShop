@@ -1,0 +1,83 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="pull-left"></div>
+    <div class="nav pull-right">
+      <ul class="list-inline">
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="hidden-xs hidden-sm"> Wish List</span>
+          </a>
+        </li>          
+        <li>
+          <a href="/shop/cart">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span class="hidden-xs hidden-sm"> Shopping Cart</span>
+            <span class="badge">{{ session.cart.totalQty }}</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class='glyphicon glyphicon-user'></span> 
+            {{# if loggedin}}
+              <span class="hidden-xs hidden-sm"> {{loggedinUser}}</span>
+            {{else}}
+              <span class="hidden-xs hidden-sm"> User Account</span>
+            {{/if}}        
+            <span class="caret"> </span>     
+          </a>
+          <ul class="dropdown-menu">
+            {{# if loggedinUser}}
+              <li><a href="/user/profile">Profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/user/logout">Logout</a></li>
+            {{else}}
+              <li><a href="/user/register">Register</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/user/login">Login</a></li>            
+            {{/if}}
+
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div>
+          <h1>NodeJS Shop</h1>
+        </div>
+      </div>
+      <div class="col-sm-5"></div>
+      <div class="col-sm-3">
+        <div id="cart" class="btn-group btn-block open">
+          
+            <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle" aria-expanded="true">
+              <span id="cart-total"><span class="glyphicon glyphicon-shopping-cart"></span> {{ifNumberNotDefined session.cart.totalQty}} item(s) - {{money session.cart.totalPrice}}</span>
+            </button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <nav id="menu" class="navbar">
+    <div class="navbar-header">
+      <span id="category" class="visible-xs">Categories</span>
+      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        {{# each categories }}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ this.category }}</a>
+        </li>
+        {{/each}} 
+      </ul>
+    </div>
+  </nav>
+</div>

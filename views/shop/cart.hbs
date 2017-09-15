@@ -1,0 +1,88 @@
+<script>
+  window.history.pushState({}, "Update URL", "/shop/cart");
+</script>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Shopping Cart</h2>
+      
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td class="text-center">Image</td>
+              <td class="text-left">Product Name</td>
+              <td class="text-left">Brand</td>
+              <td class="text-right">Unit Price</td>
+              <td class="text-right">Total Price</td>
+              <td class="text-left">Quantity</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{# each cart.items}}
+            <tr>
+              <td class="text-center"> 
+                <a href="#">
+                  <img src="{{this.item.image}}" width="47px" height="47px" alt="Not Available" title="{{this.item.name}}" class="img-thumbnail">
+                </a> 
+              </td>
+              <td class="text-left">
+                <a href="#">{{this.item.name}}</a> <br>
+                <small>Reward Points: {{this.item.rewardpoints}}</small> 
+              </td>
+              <td class="text-left">{{this.item.brand}}</td>
+              <td class="text-right">{{money this.item.offerprice}}</td>
+              <td class="text-right">{{money this.price}}</td>
+              <td class="text-left">
+                <span class="input-group-btn">
+                  <div class="input-group btn-block" style="max-width: 200px;">
+                    <form action="updatequantity/{{this.item._id}}" method="post" style="display: inline-block;">                    
+                      <input type="text" name="qty_{{this.item._id}}" value="{{this.qty}}" size="1" class="form-control">
+                      <button type="submit" data-toggle="tooltip" class="btn btn-primary" data-original-title="Update" style="margin-left: 4px;"><span class="glyphicon glyphicon-refresh"></span></button>
+                    </form>
+                    <form action="removeproduct/{{this.item._id}}" method="post" style="display: inline-block; margin-left: 44px;">     
+                      <button type="submit" data-toggle="tooltip" class="btn btn-danger" data-original-title="Remove"><span class="glyphicon glyphicon-remove"></span></button>
+                    </form>
+                  </div>                  
+                </span>
+              </td>            
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+  
+
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-8">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td class="text-right"><strong>Sub-Total:</strong></td>
+                <td class="text-right">{{money cart.totalPrice}}</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Eco Tax (-2.00):</strong></td>
+                <td class="text-right">{{money cart.totalTax}}</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>VAT (20%):</strong></td>
+                <td class="text-right">{{money cart.totalVAT}}</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Total:</strong></td>
+                <td class="text-right">{{money cart.totalPriceWithTax}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="buttons clearfix">
+        <div class="pull-left"><a href="/" class="btn btn-default">Continue Shopping</a></div>
+        <div class="pull-right"><a href="checkout" class="btn btn-primary">Checkout</a></div>
+      </div>
+
+    </div>
+  </div>
+</div>

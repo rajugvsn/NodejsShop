@@ -1,0 +1,34 @@
+{ "categories" : [
+  {
+    "id":1,
+    "category":"Desktops"
+  },
+  {
+    "id":2,
+    "category":"Laptops & Notebooks"
+  },
+  {
+    "id":3,
+    "category":"Components"
+  },
+  {
+    "id":4,
+    "category":"Tablets"
+  },
+  {
+    "id":5,
+    "category":"Software"
+  },
+  {
+    "id":6,
+    "category":"Phones & PDAs"
+  },
+  {
+    "id":7,
+    "category":"Cameras"
+  },
+  {
+    "id":8,
+    "category":"MP3 Players"
+  }           
+]}
