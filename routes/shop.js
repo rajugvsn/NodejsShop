@@ -11,6 +11,23 @@ router.get('/index', function(req, res, next) {
   });
 });
 
+router.get('/search', function(req, res, next) {
+  return res.render('shop/search');
+});
+
+router.post('/search', function(req, res, next) {
+  var filters = {"name":RegExp};
+  filters.name = new RegExp(req.body.search, 'i');
+  Product.find(filters, function(err, result) {
+    if(err) console.log(err);
+    return res.render('shop/search', {products: result});
+  });
+});
+
+router.get('/product', function(req, res, next) {
+  return res.render('shop/product');
+});
+
 router.get('/cart', function(req, res, next) {
   if(!req.session.cart) return res.render('shop/cart', {products: null});
   var cart = new Cart(req.session.cart);

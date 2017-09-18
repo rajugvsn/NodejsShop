@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Search Products</h2>
+      <div class="row">
+        {{# each products }}
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="thumbnail transition">
+              <div class="image"><a href="product"><img src={{ this.image }} alt={{ this.name }} title={{ this.name }} class="img-responsive"></a></div>
+              <div class="caption">
+              <h4><a href="product">{{ this.name }}</a></h4>
+              <p class="description">{{ this.description }}</p>
+              <p class="price">
+                {{#ifOffer this.offerprice this.price}}
+                  <span class="price-actual">Actual price: ${{ this.price }}</span>
+                {{else}}
+                  <span class="price-tax">&nbsp;</span>
+                {{/ifOffer}}
+                {{money this.offerprice }}
+                <span class="price-tax">Ex Tax: ${{percent this.price this.taxpercent }}</span>
+              </p>
+              </div>
+              <div class="button-group">
+              <a href="/addtocart/{{this._id}}"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-xs hidden-sm hidden-md">Add to Cart</span></a>
+              <a href="#"><span class="glyphicon glyphicon-heart"></span></a>
+              <a href="#"><span class="glyphicon glyphicon-transfer"></span></a>
+              </div>
+            </div>
+          </div>        
+        {{/each}}        
+      </div>  
+</div>

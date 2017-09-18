@@ -35,9 +35,9 @@
         {{# each products }}
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="thumbnail transition">
-              <div class="image"><a href="#"><img src={{ this.image }} alt={{ this.name }} title={{ this.name }} class="img-responsive"></a></div>
+              <div class="image"><a href="product"><img src={{ this.image }} alt={{ this.name }} title={{ this.name }} class="img-responsive"></a></div>
               <div class="caption">
-              <h4><a href="#">{{ this.name }}</a></h4>
+              <h4><a href="product">{{ this.name }}</a></h4>
               <p class="description">{{ this.description }}</p>
               <p class="price">
                 {{#ifOffer this.offerprice this.price}}
