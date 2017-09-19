@@ -23,16 +23,31 @@ router.get('/', function(req, res, next) {
   });
   */
   Product.find(function(err, result) {
-    res.render('shop/index', { title: 'Shopping cart', products: result });
+    res.render('index', { title: 'Shopping cart', products: result });
   });
 });
 
 router.post('/search', function(req, res, next) {
+  var heading =  (req.body.search && req.body.search != '') ? 
+                  "Showing products with name containing letters - '" + req.body.search + "'" : 
+                  "Showing all products";
+  var noProductsMsg = null;                  
   var filters = {"name":RegExp};
   filters.name = new RegExp(req.body.search, 'i');
   Product.find(filters, function(err, result) {
     if(err) console.log(err);
-    return res.render('shop/search', {products: result});
+    if(result.length === 0) heading = heading.replace("Showing", "No").replace("all ", "") + " available.";
+    return res.render('search', {heading: heading, products: result});
+  });
+});
+
+router.get('/category', function(req, res, next) {
+  var heading = "Showing products of category - '" + req.query.name + "'";
+  var filters = {"categoryId":req.query.id};
+  Product.find(filters, function(err, result) {
+    if(err) console.log(err);
+    if(result.length === 0) heading = heading.replace("Showing", "No").replace("all ", "") + " available.";
+    return res.render('search', {heading: heading, products: result});
   });
 });
 
