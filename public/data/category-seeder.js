@@ -1,7 +1,11 @@
 var Category = require('../../models/category');
 
 var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/nodejsshop');
+//Local connection
+//mongoose.connect('localhost:27017/nodejsshop');
+
+//AWS connection
+mongoose.connect('mongodb://nodejsshop:client@ec2-18-221-143-128.us-east-2.compute.amazonaws.com:27017/nodejsshop', { useMongoClient: true });
 
 var categories = [
   new Category({

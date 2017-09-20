@@ -15,7 +15,35 @@ var fs = require('fs');
 var path = require('path');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/nodejsshop', { useMongoClient: true });
+//Local connection
+//mongoose.connect('mongodb://localhost:27017/nodejsshop', { useMongoClient: true });
+
+//AWS connection
+mongoose.connect('mongodb://nodejsshop:client@ec2-18-221-143-128.us-east-2.compute.amazonaws.com:27017/nodejsshop', { useMongoClient: true });
+
+// CONNECTION EVENTS
+// When successfully connected
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose default connection open to nodejsshop' );
+});
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err, next) {
+  console.log('Mongoose default connection error: ' + err);
+});
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {
+  console.log('Mongoose default connection disconnected');
+});
+
+// If the Node process ends, close the Mongoose connection
+process.on('SIGINT', function() {
+  mongoose.connection.close(function () {
+    console.log('Mongoose default connection disconnected through app termination');
+    process.exit(0);
+  });
+});
 
 require('./config/passport');
 
